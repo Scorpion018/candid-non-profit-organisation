@@ -5,7 +5,9 @@ var app = express();
 const Pool = require('pg').Pool
 var cors = require('cors')
 const sdk = require('api')('@candidapi/v1.0#gt6359l8nax80e');
-const bodyParser = require("body-parser");    
+const bodyParser = require("body-parser");   
+var helper = require('./helper');
+let jsonData  
 
 
 app.use(bodyParser.json());       
@@ -36,16 +38,35 @@ app.get("/", (req, res) => {
 
 app.get("/candid", (req, res) => {
   sdk.eligible({ein: '56-2618866', provider: 'apple'})
-    .then(({ data }) => res.json(data))
+    .then(({data} ) => {
+      jsonData = data
+      if(helper.isEmpty(jsonData)){
+        res.sendFile("./noData.html", {
+          root: __dirname,
+      })} else {
+      res.json(jsonData)
+      }
+    })
     .catch(err => console.error(err));
 });
 
 app.post("/candid", (req, res) => {
-  // console.log('ein', req.body.eIn)
-  // console.log('Provider', req.body.provider)
   sdk.eligible({ein: `${req.body.eIn}`, provider: `${req.body.provider}`})
-    .then(({ data }) => res.json(data))
-    .catch(err => console.error(err));
+    .then(({ data }) => {
+      jsonData = data
+      // res.json(jsonData)
+      console.log(jsonData)
+      setTimeout(()=>{
+        const newData = jsonData.data
+          res.render("Main", {
+          path: newData,
+        });
+      },3000)
+    })
+    .catch(err => {
+      res.send("fetch Error");
+    });
+
 });
 
 

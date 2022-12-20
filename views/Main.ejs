@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Document
+  </title>
+</head>
+
+<body class="allelements">
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      font-size: 20px;
+      table-layout: fixed;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+  <div>
+    <table class="center">
+      <tr>
+        <th>Org Name</th>
+        <th>EIN</th>
+        <th>Eligibility Status</th>
+        <th>Eligibility Status Message</th>
+        <th>Checked Date</th>
+        <th>Profile Level</th>
+        <th>Profile Year</th>
+        <th>Profile Link</th>
+        <th>Seal Last Modified</th>
+        <th>Website URL</th>
+
+      </tr>
+      <%path.forEach(function(details){%>
+        <tr style="text-align:center;">
+          <td>
+            <%= details.organization_name %>
+          </td>
+          <td>
+            <%= details.ein %>
+          </td>
+          <td>
+            <%= details.eligibility_status %>
+          </td>
+          <td>
+            <%= details.eligibility_status_message %>
+          </td>
+          <td>
+            <%= details.eligibility_checked_date %>
+          </td>
+          <td>
+            <%= details.profile_level %>
+          </td>
+          <td>
+            <%= details.profile_year %>
+          </td>
+          <td>
+            <a href=" <%= details.profile_link %>" target="_blank">
+              <%= details.profile_link %>
+            </a>
+          </td>
+          <td>
+            <%= details.seal_last_modified %>
+          </td>
+          <td>
+            <a href=" <%= details.website_url %>" target="_blank">
+              <%= details.website_url %>
+            </a>
+          </td>
+        </tr>
+        <%})%>
+    </table>
+  </div>
+</body>
+
+</html>
