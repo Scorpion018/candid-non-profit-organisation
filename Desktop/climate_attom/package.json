@@ -1,0 +1,26 @@
+{
+  "name": "climate_attom",
+  "version": "1.0.0",
+  "description": "Climate change data;",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scorpion018/Climate-hazards-Data-Retrieval-Engine.git;.git"
+  },
+  "keywords": [
+    "USA",
+    "Climate",
+    "Hazards",
+    "retrieval",
+    "tool"
+  ],
+  "author": "Vishu Scorpion018",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scorpion018/Climate-hazards-Data-Retrieval-Engine.git;/issues"
+  },
+  "homepage": "https://github.com/Scorpion018/Climate-hazards-Data-Retrieval-Engine.git;#readme"
+}
