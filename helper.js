@@ -1,4 +1,5 @@
 isEmpty = obj => {
+  console.log('here')
   return Object.keys(obj).length === 0;
 }
 
